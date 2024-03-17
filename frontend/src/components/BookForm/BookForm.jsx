@@ -14,7 +14,7 @@ export const BookForm = () => {
 
     const handleAddRandomBook = () => {
         const randomBook = booksData[Math.floor(Math.random() * booksData.length)];
-        const randomBookWithId = {...randomBook, id: uuidv4()};
+        const randomBookWithId = {...randomBook, id: uuidv4(), isFavorite: false};
         dispatch(addBook(randomBookWithId));
         setTitle('');
         setAuthor('');
@@ -27,10 +27,11 @@ export const BookForm = () => {
                 title,
                 author,
                 id: uuidv4(),
+                isFavorite: false,
             };
-            dispatch(addBook(book))
-            setTitle('')
-            setAuthor('')
+            dispatch(addBook(book));
+            setTitle('');
+            setAuthor('');
         }
     };
     return (
